@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => (import.meta.env.PROD ? data.draft !== true : true))).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title="Blog | Patrick O'Boyle / oboylenyc" description="Technical notes and writing published from oboyle.nyc.">
+	<section class="page-hero">
+		<p class="eyebrow">Blog</p>
+		<h1>Notes on building, shipping, and thinking through technical systems.</h1>
+		<p>
+			This is a simple markdown-backed blog meant for practical posts: project notes, security observations, engineering writeups,
+			and ideas worth keeping in public.
+		</p>
+	</section>
+
+	<section>
+		<div class="post-list">
+			{posts.map((post) => (
+				<BlogCard post={post} />
+			))}
+		</div>
+	</section>
+</BaseLayout>

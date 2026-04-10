@@ -1,0 +1,22 @@
+---
+type Props = {
+	kicker: string;
+	title: string;
+	linkHref?: string;
+	linkLabel?: string;
+};
+
+const { kicker, title, linkHref, linkLabel } = Astro.props;
+---
+
+<div class="section-header">
+	<div>
+		<p class="section-kicker">{kicker}</p>
+		<h2>{title}</h2>
+	</div>
+	{linkHref && linkLabel ? (
+		<a class="link-inline" href={linkHref}>
+			{linkLabel}
+		</a>
+	) : null}
+</div>

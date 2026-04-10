@@ -1,0 +1,22 @@
+---
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/projects', label: 'Projects' },
+	{ href: '/blog', label: 'Blog' },
+	{ href: '/#contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="nav-links" aria-label="Primary navigation">
+	{links.map((link) => {
+		const isCurrent = currentPath === link.href;
+
+		return (
+			<a href={link.href} aria-current={isCurrent ? 'page' : undefined}>
+				{link.label}
+			</a>
+		);
+	})}
+</nav>

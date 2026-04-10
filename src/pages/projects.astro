@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { projects } from '../data/projects';
+
+const title = 'Projects | Patrick O\'Boyle / oboylenyc';
+const description = 'Selected original public projects spanning software engineering, experimentation, and security-adjacent technical work.';
+---
+
+<BaseLayout title={title} description={description}>
+	<section class="page-hero">
+		<p class="eyebrow">Projects</p>
+		<h1>Public work with a practical engineering bias.</h1>
+		<p>
+			A small set of original public repositories that show how I approach building, iteration, and shipping. Security is part of
+			the lens, but the emphasis here is broader engineering execution.
+		</p>
+	</section>
+
+	<section>
+		<SectionHeading kicker="Repository list" title="Original public projects" />
+		<div class="post-list">
+			{projects.map((project) => (
+				<article class="card post-card">
+					<div class="meta-row">
+						<span>{project.year}</span>
+						<span>{project.slug}</span>
+					</div>
+					<h3>{project.title}</h3>
+					<p>{project.description}</p>
+					<div class="tag-row">
+						{project.tags.map((tag) => (
+							<span class="tag">{tag}</span>
+						))}
+					</div>
+					<a class="link-inline" href={project.repoUrl}>Open repository</a>
+				</article>
+			))}
+		</div>
+	</section>
+</BaseLayout>

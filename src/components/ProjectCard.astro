@@ -1,0 +1,27 @@
+---
+import type { Project } from '../data/projects';
+
+type Props = {
+	project: Project;
+	variant?: 'wide' | 'narrow';
+};
+
+const { project, variant = 'wide' } = Astro.props;
+---
+
+<article class={`card ${variant === 'wide' ? 'featured-wide' : 'featured-narrow'}`}>
+	<div class="project-card">
+		<div class="meta-row">
+			<span>{project.year}</span>
+			<span>{project.slug}</span>
+		</div>
+		<h3>{project.title}</h3>
+		<p>{project.summary}</p>
+		<div class="tag-row">
+			{project.tags.map((tag) => (
+				<span class="tag">{tag}</span>
+			))}
+		</div>
+		<a class="link-inline" href={project.repoUrl}>View repository</a>
+	</div>
+</article>
