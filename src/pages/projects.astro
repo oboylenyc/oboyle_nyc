@@ -4,21 +4,21 @@ import SectionHeading from '../components/SectionHeading.astro';
 import { projects } from '../data/projects';
 
 const title = 'Projects | Patrick O\'Boyle / oboylenyc';
-const description = 'Selected original public projects spanning software engineering, experimentation, and security-adjacent technical work.';
+const description = 'Current public project and future work published from oboyle.nyc.';
 ---
 
 <BaseLayout title={title} description={description}>
 	<section class="page-hero">
 		<p class="eyebrow">Projects</p>
-		<h1>Public work with a practical engineering bias.</h1>
+		<h1>Public work, starting with one active portfolio-facing repository.</h1>
 		<p>
-			A small set of original public repositories that show how I approach building, iteration, and shipping. Security is part of
-			the lens, but the emphasis here is broader engineering execution.
+			This section is intentionally small right now. It highlights work I want to keep public and useful, and it will expand as I
+			publish more original projects over time.
 		</p>
 	</section>
 
 	<section>
-		<SectionHeading kicker="Repository list" title="Original public projects" />
+		<SectionHeading kicker="Repository list" title="Current public project" />
 		<div class="post-list">
 			{projects.map((project) => (
 				<article class="card post-card">
